@@ -45,3 +45,7 @@ json para adicionar um produto.
   "preco": 199.99
 }
 
+Proximos passos:
+* Tratamento de exceções.
+* Segurança
+
