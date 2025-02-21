@@ -41,4 +41,11 @@ public class ProdutoController {
         produtoService.deletarPorId(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atulizarProduto(@PathVariable Long id, @RequestBody Produto produto){
+        Optional<Produto> produtoAtualizado = produtoService.atualizarProduto(id,produto);
+        return produtoAtualizado.map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.notFound().build());
+    }
 }
