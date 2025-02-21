@@ -36,4 +36,12 @@ public class ProdutoService {
          produtoRepository.deleteById(id);
 
     }
+        public Optional<Produto> atualizarProduto (Long id, Produto produtoAtualizado){
+        return produtoRepository.findById(id).map(produto -> {
+            produto.setNome(produtoAtualizado.getNome());
+            produto.setQuantidade(produtoAtualizado.getQuantidade());
+            produto.setPreco(produtoAtualizado.getPreco());
+            return produtoRepository.save(produto);
+        });
+    }
 }
